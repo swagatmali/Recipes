@@ -13,7 +13,7 @@ class GetRecipeDetailsUseCase @Inject constructor(
     private val searchRepository: SearchRepository
 ) {
 
-    suspend operator fun invoke(i: String) = flow<NetworkResult<RecipeDetails>> {
+    operator fun invoke(i: String) = flow<NetworkResult<RecipeDetails>> {
         emit(NetworkResult.Loading())
         val response = searchRepository.getRecipeDetails(i)
         if (response.isSuccess) {
